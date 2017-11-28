@@ -1,0 +1,26 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	MVI D,00
+	MVI A,00
+	LXI H,4150
+	MOV B,M
+	INX H
+	MOV C,M
+LABEL1: ADD B		;A = A + B
+	JNC NEXT
+	INR D
+NEXT:   DCR C
+	JNZ LABEL1
+	STA 4152	;stores result
+	MOV A,D
+	STA 4153    ;stores the msb or carry
+
+hlt
